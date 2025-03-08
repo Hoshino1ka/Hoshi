@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 sns.set(style='dark')
-day=pd.read_csv("Z:\Kuliah\Coding Camp\Bike-sharing-dataset\day.csv")
-hour=pd.read_csv("Z:\Kuliah\Coding Camp\Bike-sharing-dataset\hour.csv")
+url='https://raw.githubusercontent.com/Hoshino1ka/Hoshi/refs/heads/main/hour.csv'
+hour=pd.read_csv(url)
 datetime_columns = ['dteday']
 
 st.header('Bike Rental Dashboard :sparkles:')
