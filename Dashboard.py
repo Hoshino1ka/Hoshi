@@ -9,7 +9,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-from babel.numbers import format_currency
 sns.set(style='dark')
 day=pd.read_csv("Z:\Kuliah\Coding Camp\Bike-sharing-dataset\day.csv")
 hour=pd.read_csv("Z:\Kuliah\Coding Camp\Bike-sharing-dataset\hour.csv")
