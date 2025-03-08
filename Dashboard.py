@@ -14,19 +14,6 @@ sns.set(style='dark')
 day=pd.read_csv("Z:\Kuliah\Coding Camp\Bike-sharing-dataset\day.csv")
 hour=pd.read_csv("Z:\Kuliah\Coding Camp\Bike-sharing-dataset\hour.csv")
 datetime_columns = ['dteday']
-for column in datetime_columns:
-  hour[column] = pd.to_datetime(hour[column])
-min_date = hour["dteday"].min()
-max_date = hour["dteday"].max()
- 
-with st.sidebar:
-    start_date, end_date = st.date_input(
-        label='Rentang Waktu',min_value=min_date,
-        max_value=max_date,
-        value=[min_date, max_date]
-    )
-main_df = hour[(hour["dteday"] >= str(start_date)) & 
-                (hour["dteday"] <= str(end_date))]
 
 st.header('Bike Rental Dashboard :sparkles:')
 
@@ -54,6 +41,5 @@ axes[1].set_xlabel(None)
 axes[1].set_xticks(ticks=[0, 1], labels=['Holiday', 'Workday'])
 
 plt.tight_layout()
-plt.show()
 
 st.pyplot(fig)
