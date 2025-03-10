@@ -57,5 +57,3 @@ elif plot_type == "Workday":
         st.pyplot(plt)
     else:
         st.error("Column 'workingday' contains invalid or missing values.")
-
-st.pyplot(fig)
