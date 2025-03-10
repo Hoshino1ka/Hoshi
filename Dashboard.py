@@ -36,7 +36,7 @@ plt.title("Number of Rental", loc="center", fontsize=15)
 plt.ylabel(None)
 plt.xlabel(None)
 plt.xticks(ticks=[0, 1, 2, 3], labels=['Springger', 'Summer', 'Fall', 'Winter'])
-else:
+elif plot_type == "Workday":
    plt.figure(figsize=(10, 5))
 colors = ["#D3D3D3", "#72BCD4"]
 data1 = hour.groupby(by='workingday').cnt.mean().sort_values(ascending=False).reset_index()
