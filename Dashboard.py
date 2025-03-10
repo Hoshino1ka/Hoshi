@@ -16,7 +16,7 @@ datetime_columns = ['dteday']
 
 st.header('Bike Rental Dashboard :sparkles:')
 
-st.subheader("Highest Rental Based on Season and Daily Hours")
+st.subheader("Highest Rental Based on Season and workday or not.")
 
 # Create a figure and a set of subplots
 fig, axes = plt.subplots(1, 2, figsize=(20, 5))
