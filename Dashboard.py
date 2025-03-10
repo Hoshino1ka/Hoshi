@@ -21,7 +21,6 @@ st.subheader("Highest Rental Based on Season and workday or not.")
 plot_type = st.radio("Select plot type:", ("Season", "Workday"))
 
 # Plot based on selection
-fig, ax = plt.subplots()
 if plot_type == "Season":
     plt.figure(figsize=(10, 5))
     colors = ["#D3D3D3", "#D3D3D3", "#72BCD4", "#D3D3D3"]
