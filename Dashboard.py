@@ -18,27 +18,37 @@ st.header('Bike Rental Dashboard :sparkles:')
 
 st.subheader("Highest Rental Based on Season and workday or not.")
 
-# Create a figure and a set of subplots
-fig, axes = plt.subplots(1, 2, figsize=(20, 5))
+plot_type = st.radio("Select plot type:", ("Season", "Workday"))
 
-# Plot 1: Seasonal Rentals
+# Plot based on selection
+fig, ax = plt.subplots()
+if plot_type == "Season":
+    plt.figure(figsize=(10, 5))
 colors = ["#D3D3D3", "#D3D3D3", "#72BCD4", "#D3D3D3"]
-data1 = hour.groupby(by='season').cnt.mean().sort_values(ascending=False).reset_index() 
-sns.barplot(y="cnt", x="season", data=data1, palette=colors, ax=axes[0])
-axes[0].set_title("Number of Rental by Season", loc="center", fontsize=15)
-axes[0].set_ylabel(None)
-axes[0].set_xlabel(None)
-axes[0].set_xticks(ticks=[0, 1, 2, 3], labels=['Spring', 'Summer', 'Fall', 'Winter'])
-
-# Plot 2: Workday/Holiday Rentals
-colors2 = ["#D3D3D3", "#72BCD4"]  # Colors for the second plot
-data2 = hour.groupby(by='workingday').cnt.mean().sort_values(ascending=False).reset_index()
-sns.barplot(y="cnt", x="workingday", data=data2, palette=colors2, ax=axes[1])
-axes[1].set_title("Number of Rental by Workday/Holiday", loc="center", fontsize=15)
-axes[1].set_ylabel(None)
-axes[1].set_xlabel(None)
-axes[1].set_xticks(ticks=[0, 1], labels=['Holiday', 'Workday'])
-
-plt.tight_layout()
+data1 = hour.groupby(by='season').cnt.mean().sort_values(ascending=False).reset_index()
+sns.barplot(
+    y="cnt",
+    x="season",
+    data=data1,
+    palette=colors
+)
+plt.title("Number of Rental", loc="center", fontsize=15)
+plt.ylabel(None)
+plt.xlabel(None)
+plt.xticks(ticks=[0, 1, 2, 3], labels=['Springger', 'Summer', 'Fall', 'Winter'])
+else:
+   plt.figure(figsize=(10, 5))
+colors = ["#D3D3D3", "#72BCD4"]
+data1 = hour.groupby(by='workingday').cnt.mean().sort_values(ascending=False).reset_index()
+sns.barplot(
+    y="cnt",
+    x="workingday",
+    data=data1,
+    palette=colors
+)
+plt.title("Number of Rental", loc="center", fontsize=15)
+plt.ylabel(None)
+plt.xlabel(None)
+plt.xticks(ticks=[0, 1], labels=['Holiday', 'Workday'])
 
 st.pyplot(fig)
