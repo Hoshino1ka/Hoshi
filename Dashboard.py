@@ -11,16 +11,13 @@ import seaborn as sns
 import streamlit as st
 sns.set(style='dark')
 
-# Load data
 url = 'https://raw.githubusercontent.com/Hoshino1ka/Hoshi/refs/heads/main/hour.csv'
 hour = pd.read_csv(url)
 
-# Konversi kolom tanggal ke format datetime
 hour['dteday'] = pd.to_datetime(hour['dteday'])
 
 st.header('Bike Rental Dashboard :sparkles:')
 
-# Fitur filtering berdasarkan tanggal
 date_range = st.date_input("Select Date Range", [hour['dteday'].min(), hour['dteday'].max()])
 if len(date_range) == 2:
     start_date, end_date = date_range
@@ -32,7 +29,6 @@ st.subheader("Highest Rental Based on Season and workday or not.")
 
 plot_type = st.radio("Select plot type:", ("Season", "Workday"))
 
-# Plot berdasarkan filter
 if plot_type == "Season":
     plt.figure(figsize=(10, 5))
     colors = ["#D3D3D3", "#D3D3D3", "#72BCD4", "#D3D3D3"]
